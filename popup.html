@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        min-width: 300px;
+        overflow-x: hidden;
+        font-size: 14px;
+      }
+
+      input {
+        padding: 3px;
+        margin: 5px;
+        border: 1px solid #999;
+        width: 200px;
+        height: 25px;
+      }
+
+      input.button{
+        width: 150px;
+        margin: 10px 70px;
+      }
+
+    </style>
+    <div>
+      <label>Time</label>
+      <input type="time" id="time"/>
+    </div>
+    <div>
+      <label>URL</label>
+      <input type="text" id="url"/>
+    </div>
+    <input class="button" type="button" value="Set" id="setButton"/>
+    <input class="button" type="button" value="Clear All Alarms" id="clearButton"/>
+    <div>
+      <p>Alarms set: <span id="alarmsNo">0</span></p>
+      <ul id="alarmsList">
+      </ul>
+    </div>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <script src="pageAppointment.js"></script>
+    <script src="popup.js"></script>
+
+  </head>
+  <body>
+  </body>
+</html>
+

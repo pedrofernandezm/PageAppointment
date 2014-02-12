@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   chrome.alarms.getAll(function(alarms){
-    console.log(alarms.length);
     document.getElementById("alarmsNo").innerHTML = alarms.length
     for (var i in alarms){
       var li = document.createElement('li');
-      console.log(alarms[i]);
       var next_date = new Date(alarms[i].scheduledTime);
       li.innerHTML = "Next alarm: " + next_date;
       document.getElementById("alarmsList").appendChild(li);

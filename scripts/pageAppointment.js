@@ -32,7 +32,7 @@ var pageAppointment = {
       type: "basic",
       title: "Page Appointment",
       message: message,
-      iconUrl: "icon.png"
+      iconUrl: "../images/icon.png"
     }, function(){window.close()});
   }
 }

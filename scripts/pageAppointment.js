@@ -1,21 +1,24 @@
 var pageAppointment = {
 
-  setAlarm: function(name, hours, minutes){
-    var alarmName = "pageAppointment."+name;
-    var today = new Date();
-    today.setHours(parseInt(hours));
-    today.setMinutes(parseInt(minutes));
-    today.setSeconds(0);
-    chrome.alarms.create(alarmName, {when: +today, periodInMinutes: 1440});
-    this.displayNotification("Alarm set");
+  prefix: "pageAppointmentAlarm.",
+
+  setAlarm: function(name, date){
+    var alarmName = this.prefix+name;
+    chrome.alarms.create(alarmName, {when: +date});
   },
 
-  storeAlarmUrl: function(name, url){
-    localStorage.setItem("pageAppointment."+name, url);
+  storeAlarm: function(name, url, date){
+    var alarm = {
+      name: name,
+      url: url,
+      date: date.getTime()
+    }
+    localStorage.setItem(this.prefix+name,JSON.stringify(alarm));
   },
 
-  getAlarmUrl: function(name){
-    return localStorage.getItem(name);
+  getAlarm: function(name){
+    var alarm = localStorage.getItem(name);
+    return JSON.parse(alarm);
   },
 
   openTab: function(url){

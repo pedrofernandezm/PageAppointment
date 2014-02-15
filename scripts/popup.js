@@ -5,8 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var hours = parseInt(time[0]);
     var minutes = parseInt(time[1]);
     var url = document.getElementById("url").value;
-    pageAppointment.setAlarm("pageAppointmentAlarm", hours, minutes);
-    pageAppointment.storeAlarmUrl("pageAppointmentAlarm", url);
+    var date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    date.setSeconds(0);
+    if(date < new Date()){
+      date = date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+    }
+    pageAppointment.setAlarm("alarm", date);
+    pageAppointment.storeAlarm("alarm", url, date);
+    pageAppointment.displayNotification("Alarm set");
   });
 
   document.getElementById("clearButton").addEventListener('click', function () {

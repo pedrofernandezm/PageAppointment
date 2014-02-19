@@ -12,9 +12,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if(date < new Date()){
       date = date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
     }
-    pageAppointment.setAlarm("alarm", date);
-    pageAppointment.storeAlarm("alarm", url, date);
-    pageAppointment.displayNotification("Alarm set");
+    if(url.match("http://") == null){
+      url = "http://" + url
+    }
+    if(pageAppointment.validateUrl(url)){
+      pageAppointment.setAlarm("alarm", date);
+      pageAppointment.storeAlarm("alarm", url, date);
+      pageAppointment.displayNotification("Alarm set");
+    }else{
+      document.getElementById("url-error").innerHTML = "not valid"
+    }
   });
 
   document.getElementById("clearButton").addEventListener('click', function () {

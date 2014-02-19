@@ -1,0 +1,32 @@
+#wrapper {
+  min-width: 300px;
+  overflow-x: hidden;
+}
+
+label {
+  font-size: 14px;
+  display: block;
+}
+
+input {
+  font-size: 12px;
+  padding: 3px 7px;
+  margin: 5px 0;
+  border: 1px solid #999;
+  width: 200px;
+  height: 25px;
+}
+
+input.button{
+  width: 150px;
+  margin: 10px 70px;
+}
+
+div{
+  margin-bottom: 10px;
+}
+
+span.error{
+  color: red;
+  font-size: 13px;
+}
